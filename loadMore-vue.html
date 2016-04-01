@@ -5,9 +5,15 @@
 	<title>用vue实现点击加载</title>
 </head>
 <body>
+<style>
+	li{height:200px; border-bottom:1px solid #ddd;}
+</style>
 <div class="scroll" id="content">
 	<ul>
-		<li v-for="value in list">{{value.name}}</li>
+		<li v-for="value in list">
+			{{value.name}}
+			<a href="javascript:void(0);" v-on:click="showMore()">click me!!</a>
+		</li>
 	</ul>
 	<a href="javascript:void(0);" class="getNew" v-on:click="getNewData()">click here to add more data</a>
 </div>
@@ -34,6 +40,9 @@ new Vue({
 			for(var i=0;i<news.length;i++){
 				this.list.push({name:news[i].name});
 			}
+		},
+		showMore:function(){
+			console.log('showMore');
 		}
 	}
 })
