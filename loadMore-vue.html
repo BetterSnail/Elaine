@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用vue实现点击加载</title>
+</head>
+<body>
+<div class="scroll" id="content">
+	<ul>
+		<li v-for="value in list">{{value.name}}</li>
+	</ul>
+	<a href="javascript:void(0);" class="getNew" v-on:click="getNewData()">click here to add more data</a>
+</div>
+	<script src="vue.js"></script>
+<script>
+var datas = [
+	{name:"snail"},
+	{name:"aaaaa"},
+	{name:"bbbbb"},
+	{name:"ccccc"},
+	{name:"ddddd"}
+];
+
+new Vue({
+	el:"#content",
+	data:{
+		//初始化要绑定到页面的数据
+		list:[]
+	},
+	methods:{
+		getNewData:function(){
+			//这里可以用ajax去请求data的值
+			var news = datas;
+			for(var i=0;i<news.length;i++){
+				this.list.push({name:news[i].name});
+			}
+		}
+	}
+})
+</script>
+</body>
+</html>
